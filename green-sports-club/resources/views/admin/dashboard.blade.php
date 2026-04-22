@@ -34,6 +34,25 @@
                 <p class="text-gray-500">You are logged in as <span class="font-bold text-green-600">Admin</span>. Use the navigation to manage the club.</p>
             </div>
 
+            <!-- Quick Links -->
+            <div class="bg-white rounded-lg shadow p-6 mt-6">
+                <h3 class="text-lg font-semibold text-gray-700 mb-4">Quick Links</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <a href="{{ route('admin.sports.index') }}" class="bg-green-500 hover:bg-green-600 text-white rounded-lg p-4 text-center">
+                        🏅 Manage Sports
+                    </a>
+                    <a href="{{ route('admin.students.index') }}" class="bg-blue-500 hover:bg-blue-600 text-white rounded-lg p-4 text-center">
+                        👨‍🎓 Manage Students
+                    </a>
+                    <a href="{{ route('admin.coaches.index') }}" class="bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg p-4 text-center">
+                        👨‍🏫 Manage Coaches
+                    </a>
+                    <a href="{{ route('admin.attendances.index') }}" class="bg-red-500 hover:bg-red-600 text-white rounded-lg p-4 text-center">
+                        💰 Manage Attendances
+                    </a>
+                </div>
+            </div>
+
         </div>
     </div>
 </x-app-layout>

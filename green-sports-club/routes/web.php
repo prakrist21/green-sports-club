@@ -16,8 +16,13 @@ Route::get('/', function () {
 });
 
 // Admin Routes
+// Admin Routes
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::resource('students', \App\Http\Controllers\Admin\StudentController::class);
+    Route::resource('coaches', \App\Http\Controllers\Admin\CoachController::class);
+    Route::resource('sports', \App\Http\Controllers\Admin\SportController::class);
+    Route::resource('attendances', \App\Http\Controllers\Admin\AttendanceController::class)->only(['index', 'create', 'store', 'destroy']);
 });
 
 // Coach Routes
