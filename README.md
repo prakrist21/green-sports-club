@@ -1,18 +1,18 @@
-# 🟢 Green Sports Club — Student Management System
+# Green Sports Club — Student Management System
 
 > A full-stack web application built with **Laravel** for managing students, coaches, and sports activities across multiple disciplines at Green Sports Club.
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 Green Sports Club SMS is a role-based web platform that streamlines the management of student enrollments, coach assignments, attendance tracking, and fee payments across six sports disciplines. The system is designed to reduce administrative overhead and provide a centralized hub for club operations.
 
 ---
 
-## 🎯 Key Features
+## Key Features
 
-### 👤 Role-Based Access Control
+### Role-Based Access Control
 | Role | Description |
 |------|-------------|
 | **Admin** | Full access — manage students, coaches, sports, fees, and reports |
@@ -21,20 +21,20 @@ Green Sports Club SMS is a role-based web platform that streamlines the manageme
 
 ---
 
-### 🏅 Sports Disciplines
+### Sports Disciplines
 Students can be enrolled in one or more of the following disciplines:
 
-- 🏋️ Gym
-- 🏊 Swimming
-- ⚽ Futsal
-- 🏏 Cricket
-- 🏀 Basketball
+-  Gym
+-  Swimming
+-  Futsal
+-  Cricket
+-  Basketball
 
 Each discipline has its own set of coaches, schedules, and enrolled students.
 
 ---
 
-### 📋 Core Modules
+###  Core Modules
 
 #### 1. Student Management
 - Register new students with personal details
@@ -65,7 +65,7 @@ Each discipline has its own set of coaches, schedules, and enrolled students.
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
@@ -78,7 +78,7 @@ Each discipline has its own set of coaches, schedules, and enrolled students.
 
 ---
 
-## 🗄️ Database Schema (Key Tables)
+##  Database Schema (Key Tables)
 
 ```
 users               → id, name, email, password, role (admin|coach|student)
@@ -94,7 +94,7 @@ payments            → id, student_id, fee_id, amount_paid, paid_at, status
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 - PHP >= 8.2
@@ -139,7 +139,7 @@ php artisan serve
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 app/
@@ -168,13 +168,8 @@ resources/
 
 ---
 
-## 📸 Screenshots
 
-> *(To be added after UI development)*
-
----
-
-## 🔮 Future Enhancements
+## Future Enhancements
 
 - [ ] SMS / Email notifications for fee reminders
 - [ ] Student performance tracking & reports
@@ -184,13 +179,13 @@ resources/
 
 ---
 
-## 👨‍💻 Developer
+##  Developer
 
 **Prakrist Maharjan**
 Built as a portfolio project to demonstrate full-stack Laravel development skills.
 
 ---
 
-## 📄 License
+## License
 
 This project is open-source and available under the [MIT License](LICENSE).
