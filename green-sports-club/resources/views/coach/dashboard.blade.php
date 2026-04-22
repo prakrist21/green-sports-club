@@ -8,10 +8,30 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
+            <!-- Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div class="bg-white rounded-lg shadow p-6 border-l-4 border-blue-500">
+                    <p class="text-gray-500 text-sm">Assigned Sports</p>
+                    <p class="text-3xl font-bold text-blue-600">{{ $sports->count() }}</p>
+                </div>
+                <div class="bg-white rounded-lg shadow p-6 border-l-4 border-green-500">
+                    <p class="text-gray-500 text-sm">Total Students</p>
+                    <p class="text-3xl font-bold text-green-600">{{ $totalStudents }}</p>
+                </div>
+                <div class="bg-white rounded-lg shadow p-6 border-l-4 border-yellow-500">
+                    <p class="text-gray-500 text-sm">Recent Attendances</p>
+                    <p class="text-3xl font-bold text-yellow-600">{{ $recentAttendances->count() }}</p>
+                </div>
+            </div>
+
             <!-- Welcome -->
             <div class="bg-white rounded-lg shadow p-6 mb-6 border-l-4 border-blue-500">
                 <h3 class="text-lg font-semibold text-gray-700 mb-2">Welcome, {{ auth()->user()->name }}! 👋</h3>
-                <p class="text-gray-500">You are logged in as <span class="font-bold text-blue-600">Coach</span>.</p>
+                <p class="text-gray-500">You are logged in as <span class="font-bold text-blue-600">Coach</span>.
+                @if($coach->specialization)
+                    Specialization: <span class="font-bold text-gray-700">{{ $coach->specialization }}</span>
+                @endif
+                </p>
             </div>
 
             <!-- Assigned Sports -->
@@ -22,6 +42,7 @@
                         @foreach($sports as $sport)
                             <div class="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
                                 <p class="font-semibold text-green-700">{{ $sport->name }}</p>
+                                <p class="text-xs text-gray-400 mt-1">{{ $sport->students->count() }} students</p>
                             </div>
                         @endforeach
                     </div>

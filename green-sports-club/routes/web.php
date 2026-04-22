@@ -23,6 +23,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::resource('coaches', \App\Http\Controllers\Admin\CoachController::class);
     Route::resource('sports', \App\Http\Controllers\Admin\SportController::class);
     Route::resource('attendances', \App\Http\Controllers\Admin\AttendanceController::class)->only(['index', 'create', 'store', 'destroy']);
+    Route::resource('payments', \App\Http\Controllers\Admin\PaymentController::class);
+
 });
 
 // Coach Routes

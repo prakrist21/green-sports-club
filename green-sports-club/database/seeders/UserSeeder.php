@@ -50,5 +50,15 @@ class UserSeeder extends Seeder
             'address' => 'Kathmandu, Nepal',
             'enrolled_at' => now(),
         ]);
+
+        // Fees
+        $sports = \App\Models\Sport::all();
+        foreach ($sports as $sport) {
+            \App\Models\Fee::create([
+                'sport_id' => $sport->id,
+                'amount' => rand(500, 2000),
+                'period' => 'monthly',
+            ]);
+        }
     }
 }

@@ -5,24 +5,27 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ 
-                        auth()->user()->role === 'admin' ? route('admin.dashboard') : 
-                        (auth()->user()->role === 'coach' ? route('coach.dashboard') : 
-                        route('student.dashboard')) 
-                    }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                    <a href="/" class="font-bold text-green-600 text-lg">
+                        Green Sports Club
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="
-                        auth()->user()->role === 'admin' ? route('admin.dashboard') : 
-                        (auth()->user()->role === 'coach' ? route('coach.dashboard') : 
-                        route('student.dashboard'))" 
-                        :active="request()->routeIs('admin.dashboard') || request()->routeIs('coach.dashboard') || request()->routeIs('student.dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
+                    @auth
+                        @if(auth()->user()->role === 'admin')
+                            <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">Dashboard</x-nav-link>
+                            <x-nav-link :href="route('admin.students.index')" :active="request()->routeIs('admin.students.*')">Students</x-nav-link>
+                            <x-nav-link :href="route('admin.coaches.index')" :active="request()->routeIs('admin.coaches.*')">Coaches</x-nav-link>
+                            <x-nav-link :href="route('admin.sports.index')" :active="request()->routeIs('admin.sports.*')">Sports</x-nav-link>
+                            <x-nav-link :href="route('admin.attendances.index')" :active="request()->routeIs('admin.attendances.*')">Attendance</x-nav-link>
+                            <x-nav-link :href="route('admin.payments.index')" :active="request()->routeIs('admin.payments.*')">Payments</x-nav-link>
+                        @elseif(auth()->user()->role === 'coach')
+                            <x-nav-link :href="route('coach.dashboard')" :active="request()->routeIs('coach.dashboard')">Dashboard</x-nav-link>
+                        @else
+                            <x-nav-link :href="route('student.dashboard')" :active="request()->routeIs('student.dashboard')">Dashboard</x-nav-link>
+                        @endif
+                    @endauth
                 </div>
             </div>
 
@@ -32,7 +35,6 @@
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                             <div>{{ Auth::user()->name }}</div>
-
                             <div class="ms-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -49,7 +51,6 @@
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
@@ -75,13 +76,20 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="
-                auth()->user()->role === 'admin' ? route('admin.dashboard') : 
-                (auth()->user()->role === 'coach' ? route('coach.dashboard') : 
-                route('student.dashboard'))" 
-                :active="request()->routeIs('admin.dashboard') || request()->routeIs('coach.dashboard') || request()->routeIs('student.dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
+            @auth
+                @if(auth()->user()->role === 'admin')
+                    <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">Dashboard</x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('admin.students.index')" :active="request()->routeIs('admin.students.*')">Students</x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('admin.coaches.index')" :active="request()->routeIs('admin.coaches.*')">Coaches</x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('admin.sports.index')" :active="request()->routeIs('admin.sports.*')">Sports</x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('admin.attendances.index')" :active="request()->routeIs('admin.attendances.*')">Attendance</x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('admin.payments.index')" :active="request()->routeIs('admin.payments.*')">Payments</x-responsive-nav-link>
+                @elseif(auth()->user()->role === 'coach')
+                    <x-responsive-nav-link :href="route('coach.dashboard')" :active="request()->routeIs('coach.dashboard')">Dashboard</x-responsive-nav-link>
+                @else
+                    <x-responsive-nav-link :href="route('student.dashboard')" :active="request()->routeIs('student.dashboard')">Dashboard</x-responsive-nav-link>
+                @endif
+            @endauth
         </div>
 
         <!-- Responsive Settings Options -->
@@ -96,10 +104,8 @@
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 
-                <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
