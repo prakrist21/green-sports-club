@@ -139,46 +139,6 @@ php artisan serve
 
 ---
 
-## Project Structure
-
-```
-app/
-├── Http/
-│   ├── Controllers/
-│   │   ├── Admin/          # AdminController, ReportController
-│   │   ├── StudentController.php
-│   │   ├── CoachController.php
-│   │   ├── AttendanceController.php
-│   │   └── PaymentController.php
-│   └── Middleware/
-│       └── RoleMiddleware.php
-├── Models/
-│   ├── User.php
-│   ├── Student.php
-│   ├── Coach.php
-│   ├── Sport.php
-│   ├── Attendance.php
-│   └── Payment.php
-resources/
-└── views/
-    ├── admin/
-    ├── coach/
-    └── student/
-```
-
----
-
-
-## Future Enhancements
-
-- [ ] SMS / Email notifications for fee reminders
-- [ ] Student performance tracking & reports
-- [ ] Mobile-responsive PWA
-- [ ] Online payment gateway integration
-- [ ] Parent/guardian portal
-
----
-
 ##  Developer
 
 **Prakrist Maharjan**
